@@ -1,0 +1,13 @@
+# This file should live in /etc/wpa_supplicant.conf
+# and user should be a member of the "wheel" group.
+ctrl_interface=/run/wpa_supplicant
+ctrl_interface_group=wheel
+
+# You can define several network blocks.
+# To generate, run:
+#     wpa_passphrase <network-name>
+# and enter the passphrase at the prompt.
+network={
+	ssid="Little Monster 5 Ext"
+	psk=eaaa95e733c972e1511bc36c62752c1d7d06618da8169704a2546d2581389d33
+}
