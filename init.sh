@@ -34,4 +34,6 @@ if [ ! -d "$dotfiles" ]; then
   git config core.editor 'vim'
 fi
 
+"$dotfiles/X11/gsettings"
+
 } # End of wrapping
