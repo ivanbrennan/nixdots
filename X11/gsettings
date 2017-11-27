@@ -5,5 +5,6 @@
 gsettings set org.gnome.desktop.input-sources xkb-options \
   "['caps:ctrl_modifier', 'shift:both_capslock']"
 gsettings set org.gnome.desktop.interface gtk-key-theme "Emacs"
+gsettings set org.gnome.desktop.interface clock-format "12h"
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 gsettings set org.gnome.desktop.peripherals.touchpad click-method "fingers"
