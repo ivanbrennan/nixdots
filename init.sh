@@ -27,13 +27,9 @@ if [ ! -d "$dotfiles" ]; then
   git clone \
       "git@${github_host}:ivanbrennan/nixdots.git" \
       "$dotfiles"
-
-  cd "$dotfiles"
-  git config user.email 'ivan.brennan@gmail.com'
-  git config user.name 'ivanbrennan'
-  git config core.editor 'vim'
 fi
 
+"$dotfiles/install/make-symlinks.sh"
 "$dotfiles/X11/gsettings"
 
 } # End of wrapping
