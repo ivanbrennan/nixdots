@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 protected_branch='master'
 current_ref=$(git symbolic-ref HEAD)
