@@ -5,6 +5,7 @@ set -eu
 repo=$DOTFILES
 
 config_files=(
+  "$repo/alacritty"
   "$repo/git"
 )
 
