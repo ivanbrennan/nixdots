@@ -30,7 +30,7 @@ make_symlink() {
   fi
 
   mkdir -p $(dirname "$link")
-  ln -svnf "$src" "$link" | grep -Fe '->'
+  ln -svnf "$src" "$link" | grep --color=auto -Fe '->'
 }
 
 already_exists() {
