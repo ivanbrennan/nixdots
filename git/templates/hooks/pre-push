@@ -5,9 +5,9 @@ current_ref=$(git symbolic-ref HEAD)
 current_branch=${current_ref##*/}
 
 if [[ "$current_branch" = "$protected_branch" ]]; then
-  read -r -n 1 -p "You're about to push master, is that what you intended? [y|n] " < /dev/tty
+  read -r -p "You're about to push master, is that what you intended? [yes|no] " < /dev/tty
   echo
-  if [[ "$REPLY" = y || "$REPLY" = Y ]]; then
+  if [[ "$REPLY" = yes ]]; then
     exit 0 # allow push
   else
     exit 1 # prevent push
