@@ -31,3 +31,11 @@ gsettings set org.gnome.Terminal.Legacy.${keybindings} zoom-in '<Ctrl>equal'
 
 gsettings set org.gnome.desktop.background picture-uri \
   '/run/current-system/sw/share/backgrounds/gnome/Godafoss_Iceland.jpg'
+
+gsettings set org.gnome.GPaste launch-ui '<Ctrl><Alt>G'
+gsettings set org.gnome.GPaste pop '<Ctrl><Alt>P'
+gsettings set org.gnome.GPaste show-history '<Ctrl><Alt>H'
+gsettings set org.gnome.GPaste sync-clipboard-to-primary '<Ctrl><Alt><Shift>O'
+gsettings set org.gnome.GPaste sync-primary-to-clipboard '<Ctrl><Alt><Shift>P'
+gsettings set org.gnome.GPaste make-password '<Ctrl><Alt>S'
+gsettings set org.gnome.GPaste upload '<Ctrl><Alt><Shift>U'
