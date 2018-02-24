@@ -109,7 +109,7 @@ color_schemes:
 
     # Colors the cursor will use if `custom_cursor_colors` is true
     cursor:
-      text: '0x191e22'
+      text:   '0x191e22'
       cursor: '0xd2d8e3'
 
     # Normal colors
@@ -152,7 +152,7 @@ color_schemes:
 
     # Colors the cursor will use if `custom_cursor_colors` is true
     cursor:
-      text: '0xffffff'
+      text:   '0xffffff'
       cursor: '0x555753'
 
     # Normal colors
@@ -195,7 +195,7 @@ color_schemes:
 
     # Colors the cursor will use if `custom_cursor_colors` is true
     cursor:
-      text: '0x3B4252'
+      text:   '0x3B4252'
       cursor: '0xD8DEE9'
 
     # Normal colors
