@@ -73,7 +73,7 @@ font:
     # style: Italic
 
   # Point size of the font
-  size: 11.0
+  size: 13.0
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
@@ -102,48 +102,48 @@ custom_cursor_colors: true
 
 # Colors
 color_schemes:
-  marino: &dark
+  night: &dark
     primary:
-      background: '0x1f2d3b'
-      foreground: '0xd8dee9'
+      background: '0x14171e'
+      foreground: '0xd5d8dc'
 
     # Colors the cursor will use if `custom_cursor_colors` is true
     cursor:
-      text: '0x3b4252'
-      cursor: '0xd8dee9'
+      text: '0x191e22'
+      cursor: '0xd2d8e3'
 
     # Normal colors
     normal:
-      black:   '0x3b4252'
-      red:     '0xbf616a'
-      green:   '0xa3be8c'
+      black:   '0x15171b'
+      red:     '0xde4d3a'
+      green:   '0xb8e068'
       yellow:  '0xebcb8b'
-      blue:    '0x81a1c1'
-      magenta: '0xb48ead'
-      cyan:    '0x88c0d0'
-      white:   '0xe5e9f0'
+      blue:    '0x66acc4'
+      magenta: '0x617fa0'
+      cyan:    '0x69d2e7'
+      white:   '0xd5d8dc'
 
     # Bright colors
     bright:
-      black:   '0x4c566a'
-      red:     '0xbf616a'
-      green:   '0xa3be8c'
-      yellow:  '0xebcb8b'
-      blue:    '0x81a1c1'
-      magenta: '0xb48ead'
-      cyan:    '0x8fbcbb'
-      white:   '0xeceff4'
+      black:   '0x303d4b'
+      red:     '0xf4718c'
+      green:   '0xd8e778'
+      yellow:  '0xf8bb39'
+      blue:    '0xa1b3c9'
+      magenta: '0x53769d'
+      cyan:    '0x26a6a6'
+      white:   '0xffffff'
 
     # Dim colors (Optional)
     dim:
-      black:   '0x3b4252'
-      red:     '0xbf616a'
-      green:   '0xa3be8c'
+      black:   '0x15171b'
+      red:     '0xde4d3a'
+      green:   '0xb8e058'
       yellow:  '0xebcb8b'
-      blue:    '0x81a1c1'
-      magenta: '0xb48ead'
-      cyan:    '0x88c0d0'
-      white:   '0xe5e9f0'
+      blue:    '0x66acc4'
+      magenta: '0x617fa0'
+      cyan:    '0x69d2e7'
+      white:   '0xd5d8dc'
 
   blight: &light
     primary:
