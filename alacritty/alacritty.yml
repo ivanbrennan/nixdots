@@ -104,7 +104,7 @@ custom_cursor_colors: true
 color_schemes:
   night: &dark
     primary:
-      background: '0x14171e'
+      background: '0x14171d'
       foreground: '0xd5d8dc'
 
     # Colors the cursor will use if `custom_cursor_colors` is true
@@ -114,7 +114,7 @@ color_schemes:
 
     # Normal colors
     normal:
-      black:   '0x15171b'
+      black:   '0x14171d'
       red:     '0xde4d3a'
       green:   '0xb8e068'
       yellow:  '0xebcb8b'
@@ -136,7 +136,7 @@ color_schemes:
 
     # Dim colors (Optional)
     dim:
-      black:   '0x15171b'
+      black:   '0x14171d'
       red:     '0xde4d3a'
       green:   '0xb8e058'
       yellow:  '0xebcb8b'
