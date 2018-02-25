@@ -6,13 +6,13 @@
 # For array settings with empty default values (e.g. xkb-options),
 # overrides cascade as you'd expect.
 #
-#       ┌——————— default settings ————————┐
+#       ┌─────── default settings ────────┐
 #       │                                 │
-#       │    ┌—— session settings ———┐    │
+#       │    ┌── session settings ───┐    │
 #       │    │                       │    │
-#       │    │  ┌— user settings —┐  │    │
+#       │    │  ┌─ user settings ─┐  │    │
 #       │    │  │                 │  │    │
-#       └————┴——┴—————————————————┴——┴————┘
+#       └────┴──┴─────────────────┴──┴────┘
 #
 # NOTE: `gsettings reset org.gnome.desktop.input-sources xkb-options` resets
 # xkb-options to its default value, [], ignoring any session-level override
@@ -52,3 +52,124 @@ gsettings set org.gnome.GPaste sync-clipboard-to-primary '<Ctrl><Alt><Shift>O'
 gsettings set org.gnome.GPaste sync-primary-to-clipboard '<Ctrl><Alt><Shift>P'
 gsettings set org.gnome.GPaste make-password '<Ctrl><Alt>S'
 gsettings set org.gnome.GPaste upload '<Ctrl><Alt><Shift>U'
+
+gnome_terminal_profile() {
+  local uuid=$(gsettings get org.gnome.Terminal.ProfilesList default)
+  local schema='org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles'
+  printf '%s:/:%s/' ${schema} ${uuid:1:-1}
+}
+
+gnome_terminal_set() {
+  local key=$1 val=$2
+  gsettings set "$(gnome_terminal_profile)" "$key" "$val"
+}
+
+gnome_terminal_list() {
+  gsettings list-recursively "$(gnome_terminal_profile)"
+}
+
+set_colors_from_dynamic_scope() {
+  local palette vars
+
+  palette="['$c00', '$c01', '$c02', '$c03', '$c04', '$c05', '$c06', '$c07',
+            '$c08', '$c09', '$c10', '$c11', '$c12', '$c13', '$c14', '$c15']"
+
+  vars=(
+    background_color
+    foreground_color
+    cursor_background_color
+    cursor_foreground_color
+    cursor_colors_set
+    highlight_background_color
+    highlight_foreground_color
+    bold_color
+    font
+    use_system_font
+    palette
+  )
+
+  for var in c{00..15} ${vars[@]}; do
+    [ -n "${!var:-}" ] || exit -1
+  done
+
+  for var in ${vars[@]}; do
+    gnome_terminal_set ${var//_/-} "${!var}"
+  done
+}
+
+reset_colors() {
+  local background_color='#000000' \
+        foreground_color='#00FF00' \
+        cursor_background_color='#000000' \
+        cursor_foreground_color='#ffffff' \
+        cursor_colors_set='false' \
+        highlight_background_color='#000000' \
+        highlight_foreground_color='#ffffff' \
+        bold_color='#000000' \
+        font='Monospace 11' \
+        use_system_font='true'
+
+  local c00 c01 c02 c03 c04 c05 c06 c07 \
+        c08 c09 c10 c11 c12 c13 c14 c15
+
+  # Normal colors
+  c00='#2E2E34343636' # black
+  c01='#CCCC00000000' # red
+  c02='#4E4E9A9A0606' # green
+  c03='#C4C4A0A00000' # yellow
+  c04='#34346565A4A4' # blue
+  c05='#757550507B7B' # magenta
+  c06='#060698209A9A' # cyan
+  c07='#D3D3D7D7CFCF' # white
+
+  # Bright colors
+  c08='#555557575353' # black
+  c09='#EFEF29292929' # red
+  c10='#8A8AE2E23434' # green
+  c11='#FCFCE9E94F4F' # yellow
+  c12='#72729F9FCFCF' # blue
+  c13='#ADAD7F7FA8A8' # magenta
+  c14='#3434E2E2E2E2' # cyan
+  c15='#EEEEEEEEECEC' # white
+
+  set_colors_from_dynamic_scope
+}
+
+night_colors() {
+  local background_color='#14171d' \
+        foreground_color='#d5d8dc' \
+        cursor_background_color='#d2d8e3' \
+        cursor_foreground_color='#191e22' \
+        cursor_colors_set='true' \
+        highlight_background_color='#1c1f26' \
+        highlight_foreground_color='#ffffff' \
+        bold_color='#ffffff' \
+        font='Source Code Pro 14' \
+        use_system_font='false'
+
+  local c00 c01 c02 c03 c04 c05 c06 c07 \
+        c08 c09 c10 c11 c12 c13 c14 c15
+
+  # Normal colors
+  c00='#14171d' # black
+  c01='#de4d3a' # red
+  c02='#b8e068' # green
+  c03='#ebcb8b' # yellow
+  c04='#61b3c9' # blue
+  c05='#617fa0' # magenta
+  c06='#69d2e7' # cyan
+  c07='#d5d8dc' # white
+
+  # Bright colors
+  c08='#303d4b' # black
+  c09='#f4718c' # red
+  c10='#d8e778' # green
+  c11='#f8bb39' # yellow
+  c12='#a1b3c9' # blue
+  c13='#53769d' # magenta
+  c14='#26a6a6' # cyan
+  c15='#ffffff' # white
+
+  set_colors_from_dynamic_scope
+}
+night_colors
