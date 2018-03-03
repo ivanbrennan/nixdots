@@ -102,7 +102,7 @@ custom_cursor_colors: true
 
 # Colors
 color_schemes:
-  night: &dark
+  ion: &dark
     primary:
       background: '0x14171d'
       foreground: '0xd5d8dc'
