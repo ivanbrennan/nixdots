@@ -104,7 +104,7 @@ custom_cursor_colors: true
 color_schemes:
   ion: &dark
     primary:
-      background: '0x14171d'
+      background: '0x181818'
       foreground: '0xd5d8dc'
 
     # Colors the cursor will use if `custom_cursor_colors` is true
@@ -137,13 +137,13 @@ color_schemes:
     # Dim colors (Optional)
     dim:
       black:   '0x14171d'
-      red:     '0xde4d3a'
-      green:   '0xb8e058'
-      yellow:  '0xebcb8b'
-      blue:    '0x66acc4'
-      magenta: '0x617fa0'
-      cyan:    '0x69d2e7'
-      white:   '0xd5d8dc'
+      red:     '0x943326'
+      green:   '0x7b9545'
+      yellow:  '0xbda370'
+      blue:    '0x407786'
+      magenta: '0x40546b'
+      cyan:    '0x3b7681'
+      white:   '0x6a6c6e'
 
   blight: &light
     primary:
