@@ -383,8 +383,8 @@ key_bindings:
   - { key: Back,                           chars: "\x7f"                        }
   - { key: Back,      mods: Alt,           chars: "\x1b\x7f"                    }
   - { key: Return,    mods: Shift,         chars: "\x1b[13;2u"                  }
+  - { key: Return,    mods: Alt|Shift,     chars: "\x1b[13;4u"                  }
   - { key: Return,    mods: Control,       chars: "\x1b[13;5u"                  }
-  - { key: Return,    mods: Alt,           chars: "\x1b[13;3u"                  }
   - { key: Space,     mods: Shift,         chars: "\x1b[32;2u"                  }
   - { key: Space,     mods: Control|Shift, chars: "\x1b[32;6u"                  }
   - { key: Space,     mods: Control,       chars: "\x00"                        }
