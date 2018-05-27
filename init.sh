@@ -30,6 +30,6 @@ if [ ! -d "$dotfiles" ]; then
 fi
 
 "$dotfiles/install/make-symlinks.sh"
-"$dotfiles/X11/gsettings"
+"$dotfiles/X11/gsettings" prefs
 
 } # End of wrapping
