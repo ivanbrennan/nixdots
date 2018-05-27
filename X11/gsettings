@@ -56,6 +56,8 @@ set_preferences() {
   gsettings set org.gnome.GPaste sync-primary-to-clipboard '<Ctrl><Alt><Shift>P'
   gsettings set org.gnome.GPaste make-password '<Ctrl><Alt>S'
   gsettings set org.gnome.GPaste upload '<Ctrl><Alt><Shift>U'
+
+  gsettings set org.gnome.shell always-show-log-out true
 }
 
 gnome_terminal_profile() {
