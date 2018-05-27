@@ -12,6 +12,7 @@ config_files=(
 main() {
     make_config_symlinks
     make_ghci_conf_symlink
+    make_docker_config_symlink
 }
 
 make_config_symlinks() {
@@ -23,6 +24,10 @@ make_config_symlinks() {
 
 make_ghci_conf_symlink() {
     make_symlink "$repo/ghc/ghci.conf" "$HOME/.ghc/ghci.conf"
+}
+
+make_docker_config_symlink() {
+    make_symlink "$repo/docker/config.json" "$HOME/.docker/config.json"
 }
 
 make_symlink() {
