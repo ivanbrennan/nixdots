@@ -10,9 +10,14 @@ config_files=(
 )
 
 main() {
+    make_bashrc_symlink
     make_config_symlinks
     make_ghci_conf_symlink
     make_docker_config_symlink
+}
+
+make_bashrc_symlink() {
+    make_symlink "$repo/bash/bashrc" "$HOME/.bashrc"
 }
 
 make_config_symlinks() {

@@ -1,0 +1,1 @@
+eval "$(register-python-argcomplete sumall 2>/dev/null)"
