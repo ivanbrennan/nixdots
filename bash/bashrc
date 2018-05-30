@@ -1,1 +1,1 @@
-eval "$(register-python-argcomplete sumall 2>/dev/null)"
+eval "$(register-sumall-argcomplete 2>/dev/null)"
