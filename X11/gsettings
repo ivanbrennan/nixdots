@@ -61,9 +61,10 @@ set_preferences() {
 }
 
 gnome_terminal_profile() {
-  local uuid=$(gsettings get org.gnome.Terminal.ProfilesList default)
-  local schema='org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles'
-  printf '%s:/:%s/' ${schema} ${uuid:1:-1}
+  local schema uuid
+  schema='org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles'
+  uuid=$(gsettings get org.gnome.Terminal.ProfilesList default)
+  printf '%s:/:%s/' ${schema} "${uuid:1:-1}"
 }
 
 gnome_terminal_set() {
@@ -95,12 +96,12 @@ set_colors_from_dynamic_scope() {
     palette
   )
 
-  for var in c{00..15} ${vars[@]}; do
+  for var in c{00..15} "${vars[@]}"; do
     [ -n "${!var:-}" ] || exit -1
   done
 
-  for var in ${vars[@]}; do
-    gnome_terminal_set ${var//_/-} "${!var}"
+  for var in "${vars[@]}"; do
+    gnome_terminal_set "${var//_/-}" "${!var}"
   done
 }
 
@@ -220,16 +221,16 @@ dark_colors() {
 
 usage() {
   local src=${BASH_SOURCE[0]}
-  printf '%sUsage%s:\n' $(tput bold) $(tput sgr0)
-  printf '  %s prefs\t\t%sset preferences to pre-configured values%s\n' $src $(tput sitm) $(tput sgr0)
-  printf '  %s termlist\t%slist terminal settings%s\n' $src $(tput sitm) $(tput sgr0)
-  printf '  %s termset\t\t%sset terminal KEY to VAL%s\n' $src $(tput sitm) $(tput sgr0)
-  printf '  %s color reset\t%sreset to old defaults%s\n' $src $(tput sitm) $(tput sgr0)
-  printf '  %s color NAME\t%sactivate NAME color scheme%s\n' $src $(tput sitm) $(tput sgr0)
+  printf '%sUsage%s:\n' "$(tput bold)" "$(tput sgr0)"
+  printf '  %s prefs\t\t%sset preferences to pre-configured values%s\n' "$src" "$(tput sitm)" "$(tput sgr0)"
+  printf '  %s termlist\t%slist terminal settings%s\n' "$src" "$(tput sitm)" "$(tput sgr0)"
+  printf '  %s termset\t\t%sset terminal KEY to VAL%s\n' "$src" "$(tput sitm)" "$(tput sgr0)"
+  printf '  %s color reset\t%sreset to old defaults%s\n' "$src" "$(tput sitm)" "$(tput sgr0)"
+  printf '  %s color NAME\t%sactivate NAME color scheme%s\n' "$src" "$(tput sitm)" "$(tput sgr0)"
 }
 
 color_usage() {
-  printf '%sAvailable color schemes%s:\n' $(tput bold) $(tput sgr0)
+  printf '%sAvailable color schemes%s:\n' "$(tput bold)" "$(tput sgr0)"
   for name in reset dark bluestone; do
     printf '  %s\n' $name
   done
