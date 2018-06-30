@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # These changes take effect immediately and persist across logins.
 # Settings exist at three levels: default, session, user.
