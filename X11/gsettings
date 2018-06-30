@@ -1,23 +1,5 @@
 #!/usr/bin/env bash
 
-# These changes take effect immediately and persist across logins.
-# Settings exist at three levels: default, session, user.
-#
-# For array settings with empty default values (e.g. xkb-options),
-# overrides cascade as you'd expect.
-#
-#       ┌─────── default settings ────────┐
-#       │                                 │
-#       │    ┌── session settings ───┐    │
-#       │    │                       │    │
-#       │    │  ┌─ user settings ─┐  │    │
-#       │    │  │                 │  │    │
-#       └────┴──┴─────────────────┴──┴────┘
-#
-# NOTE: `gsettings reset org.gnome.desktop.input-sources xkb-options` resets
-# xkb-options to its default value, [], ignoring any session-level override
-# that may exist. A reboot will allow session-level overrides to take effect.
-
 set_preferences() {
   gsettings set org.gnome.desktop.interface gtk-key-theme "Emacs"
   gsettings set org.gnome.desktop.interface clock-format "12h"
