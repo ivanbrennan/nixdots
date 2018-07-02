@@ -7,7 +7,7 @@ set -eu
 while [ $# -gt 0 ]; do
   case "$1" in
     -g|--github-host)
-      arg_github_host="$2"
+      github_host="$2"
       shift
       ;;
     *)
@@ -18,7 +18,7 @@ while [ $# -gt 0 ]; do
   shift
 done
 
-github_host="${arg_github_host:-github.com}"
+: ${github_host:=github.com}
 dotfiles="$HOME/Development/resources/dotfiles"
 
 if [ ! -d "$dotfiles" ]; then
