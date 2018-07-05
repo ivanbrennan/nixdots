@@ -1,0 +1,108 @@
+#!/usr/bin/env bash
+
+set -eu
+
+main() {
+    symlink_configs
+    import_public_github_gpg_key
+    configure_desktop
+    print_done
+}
+
+symlink_configs() {
+    local pkgs pkg
+
+    pkgs=(
+        alacritty
+        bash
+        docker
+        ghc
+        git
+        gpg
+    )
+
+    for pkg in "${pkgs[@]}"
+    do
+        stow --restow \
+             --dir="$DOTFILES/stow" \
+             --target="$HOME" \
+             "$pkg"
+    done
+}
+
+import_public_github_gpg_key() {
+    if ! got_github_pubkey; then
+        get_github_pubkey
+    fi
+}
+
+got_github_pubkey() {
+    local pubkey=4AEE18F83AFDEB23
+    gpg --list-public-keys --with-colons | grep --quiet $pubkey
+}
+
+get_github_pubkey() {
+    local url=https://github.com/web-flow.gpg
+    local out=$(mktemp pubkey.XXXXXXXX)
+    curl $url --output $out && gpg --import $out && rm $out
+}
+
+configure_desktop() {
+  gsettings set org.gnome.desktop.interface gtk-key-theme "Emacs"
+  gsettings set org.gnome.desktop.interface clock-format "12h"
+
+  gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+  gsettings set org.gnome.desktop.peripherals.touchpad click-method "fingers"
+
+  gsettings set org.gnome.desktop.peripherals.keyboard delay 200
+  gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 30
+
+  gsettings set org.gnome.Terminal.Legacy.Settings default-show-menubar false
+  gsettings set org.gnome.Terminal.Legacy.Settings theme-variant "dark"
+  gnome_terminal_set scrollbar-policy "never"
+
+  keybindings=Keybindings:/org/gnome/terminal/legacy/keybindings/
+
+  gsettings set org.gnome.Terminal.Legacy.${keybindings} copy '<Ctrl><Alt>c'
+  gsettings set org.gnome.Terminal.Legacy.${keybindings} paste '<Ctrl><Alt>v'
+
+  gsettings set org.gnome.Terminal.Legacy.${keybindings} new-window '<Ctrl><Alt>n'
+  gsettings set org.gnome.Terminal.Legacy.${keybindings} new-tab '<Ctrl><Alt>t'
+
+  gsettings set org.gnome.Terminal.Legacy.${keybindings} toggle-menubar '<Ctrl><Alt>b'
+  gsettings set org.gnome.Terminal.Legacy.${keybindings} full-screen '<Ctrl><Alt>Return'
+  gsettings set org.gnome.Terminal.Legacy.${keybindings} zoom-in '<Ctrl>equal'
+
+  gsettings set org.gnome.desktop.wm.keybindings activate-window-menu "['<Alt><Shift>space']"
+
+  gsettings set org.gnome.desktop.background picture-uri \
+    '/run/current-system/sw/share/backgrounds/gnome/Godafoss_Iceland.jpg'
+
+  gsettings set org.gnome.GPaste launch-ui '<Ctrl><Alt>G'
+  gsettings set org.gnome.GPaste pop '<Ctrl><Alt>P'
+  gsettings set org.gnome.GPaste show-history '<Ctrl><Alt>H'
+  gsettings set org.gnome.GPaste sync-clipboard-to-primary '<Ctrl><Alt><Shift>O'
+  gsettings set org.gnome.GPaste sync-primary-to-clipboard '<Ctrl><Alt><Shift>P'
+  gsettings set org.gnome.GPaste make-password '<Ctrl><Alt>S'
+  gsettings set org.gnome.GPaste upload '<Ctrl><Alt><Shift>U'
+
+  gsettings set org.gnome.shell always-show-log-out true
+}
+
+gnome_terminal_set() {
+  local key=$1 val=$2
+  gsettings set "$(gnome_terminal_profile)" "$key" "$val"
+}
+
+gnome_terminal_profile() {
+  local schema uuid
+  schema='org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles'
+  uuid=$(gsettings get org.gnome.Terminal.ProfilesList default)
+  printf '%s:/:%s/' ${schema} "${uuid:1:-1}"
+}
+
+print_done() {
+    printf '%s%s✓%s Done\n' $(tput bold) $(tput setaf 2) $(tput sgr0)
+}
+
+main

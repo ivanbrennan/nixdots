@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+set -eu
+
+{ # Prevent execution if this script was only partially downloaded
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        -g|--github-host)
+            github_host="$2"
+            shift
+            ;;
+        *)
+            printf 'Usage: bash %s [-g|--github-host HOST]\n' "$0"
+            exit 1
+            ;;
+    esac
+    shift
+done
+: ${github_host:=github.com}
+
+mkdir -p "$HOME/Development/"{code,resources}
+
+export DOTFILES
+: ${DOTFILES:="$HOME/Development/resources/dotfiles"}
+[ -e "$DOTFILES" ] || \
+    git clone "git@${github_host}:ivanbrennan/nixdots.git" "$DOTFILES"
+
+"$DOTFILES/bin/dots"
+
+: ${EMACSD:="$HOME/Development/resources/emacs.d"}
+[ -e "$EMACSD" ] || \
+    git clone "git@${github_host}:ivanbrennan/emacs.d.git" "$EMACSD"
+
+ln -svnf "$HOME/Development/resources/emacs.d" "$HOME/.emacs.d"
+
+} # End of wrapping
