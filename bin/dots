@@ -19,6 +19,7 @@ symlink_configs() {
         ghc
         git
         gpg
+        minikube
     )
 
     for pkg in "${pkgs[@]}"
