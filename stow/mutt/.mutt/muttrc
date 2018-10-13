@@ -8,6 +8,7 @@ set imap_pass = `pass show gmail | head -n 1`
 set folder = "imaps://imap.gmail.com:993"
 set spoolfile = "+INBOX"
 set postponed = "+[Gmail]/Drafts"
+set record = ""
 set smtp_url = "smtp://ivan.brennan@gmail.com@smtp.gmail.com:587/"
 set smtp_pass = `pass show gmail | head -n 1`
 set move = no
