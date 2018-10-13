@@ -1,11 +1,6 @@
 set ssl_force_tls = yes
-
-set record = ""
-set move = no
-
 set imap_keepalive = 900
-
-set sort = reverse-date
+set move = no
 
 # accounts
 folder-hook "account.com.gmail.home" "source ~/.mutt/account.com.gmail.home"
@@ -14,6 +9,22 @@ folder-hook "account.com.gmail.work" "source ~/.mutt/account.com.gmail.work"
 macro index gh "<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.home<enter><change-folder>!<enter>"
 macro index gw "<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.work<enter><change-folder>!<enter>"
 
-# Default account
 set my_default_account = `echo ${MUTT_ACCOUNT:-home}`
 source ~/.mutt/account.com.gmail.$my_default_account
+
+# options
+set sort = threads
+set sort_aux = reverse-last-date
+set index_format = "%4C %Z %{%b %d} %-22.22L %s"
+set header_color_partial = yes
+
+# appearance
+color indicator  brightyellow default
+color status     color242     default
+color hdrdefault color248     default
+color header     color222     default '^[[:alpha:]]+:'
+
+# keybindings
+bind  index,pager E edit
+bind  index       G imap-fetch-mail
+macro index,pager z "<save-message>=[Gmail]/All <enter><enter><enter-command>echo 'Conversation archived.'<enter>"
