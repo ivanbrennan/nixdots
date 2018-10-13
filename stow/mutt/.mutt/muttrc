@@ -1,22 +1,19 @@
 set ssl_force_tls = yes
 
-set realname = "Ivan Brennan"
-set from = "ivan.brennan@gmail.com"
-set imap_user = "ivan.brennan@gmail.com"
-set imap_pass = `pass show gmail | head -n 1`
-
-set folder = "imaps://imap.gmail.com:993"
-set spoolfile = "+INBOX"
-set postponed = "+[Gmail]/Drafts"
 set record = ""
-set smtp_url = "smtp://ivan.brennan@gmail.com@smtp.gmail.com:587/"
-set smtp_pass = `pass show gmail | head -n 1`
 set move = no
-
-set header_cache = "~/.mutt/cache/headers"
-set message_cachedir = "~/.mutt/cache/bodies"
-set certificate_file = "~/.mutt/certificates"
 
 set imap_keepalive = 900
 
 set sort = reverse-date
+
+# accounts
+folder-hook "account.com.gmail.home" "source ~/.mutt/account.com.gmail.home"
+folder-hook "account.com.gmail.work" "source ~/.mutt/account.com.gmail.work"
+
+macro index gh "<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.home<enter><change-folder>!<enter>"
+macro index gw "<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.work<enter><change-folder>!<enter>"
+
+# Default account
+set my_default_account = `echo ${MUTT_ACCOUNT:-home}`
+source ~/.mutt/account.com.gmail.$my_default_account

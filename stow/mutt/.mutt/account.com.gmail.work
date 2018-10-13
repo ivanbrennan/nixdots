@@ -1,0 +1,15 @@
+set imap_user = "ibrennan@sumall.com"
+set imap_pass = `pass show sumall/mail | head -n 1`
+set smtp_url = "smtp://ibrennan@sumall.com@smtp.gmail.com:587/"
+set smtp_pass = `pass show sumall/mail | head -n 1`
+
+set from = "ibrennan@sumall.com"
+set realname = "Ivan Brennan"
+
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set postponed = "+[Gmail]/Drafts"
+
+set header_cache = "~/.mutt/com.gmail.work/cache/headers"
+set message_cachedir = "~/.mutt/com.gmail.work/cache/bodies"
+set certificate_file = "~/.mutt/com.gmail.work/certificates"
