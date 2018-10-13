@@ -1,0 +1,21 @@
+set ssl_force_tls = yes
+
+set realname = "Ivan Brennan"
+set from = "ivan.brennan@gmail.com"
+set imap_user = "ivan.brennan@gmail.com"
+set imap_pass = `pass show gmail | head -n 1`
+
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set postponed = "+[Gmail]/Drafts"
+set smtp_url = "smtp://ivan.brennan@gmail.com@smtp.gmail.com:587/"
+set smtp_pass = `pass show gmail | head -n 1`
+set move = no
+
+set header_cache = "~/.mutt/cache/headers"
+set message_cachedir = "~/.mutt/cache/bodies"
+set certificate_file = "~/.mutt/certificates"
+
+set imap_keepalive = 900
+
+set sort = reverse-date

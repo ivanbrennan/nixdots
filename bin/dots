@@ -20,6 +20,7 @@ symlink_configs() {
         git
         gpg
         minikube
+        mutt
     )
 
     for pkg in "${pkgs[@]}"
