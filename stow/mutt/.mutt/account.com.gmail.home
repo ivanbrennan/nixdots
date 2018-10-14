@@ -17,5 +17,5 @@ set header_cache = "~/.mutt/com.gmail.home/cache/headers"
 set message_cachedir = "~/.mutt/com.gmail.home/cache/bodies"
 set certificate_file = "~/.mutt/com.gmail.home/certificates"
 
-source ~/.mutt/com.gmail.home/aliases
 set alias_file = ~/.mutt/com.gmail.home/aliases
+source $alias_file
