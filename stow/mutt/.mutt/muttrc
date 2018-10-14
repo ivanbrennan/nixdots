@@ -17,6 +17,7 @@ set sort = threads
 set sort_aux = reverse-last-date
 set index_format = "%4C %Z %{%b %d} %-22.22L %s"
 set header_color_partial = yes
+set confirmappend = no
 
 # appearance
 color indicator  brightyellow default
@@ -27,4 +28,4 @@ color header     color222     default '^[[:alpha:]]+:'
 # keybindings
 bind  index,pager E edit
 bind  index       G imap-fetch-mail
-macro index,pager z "<save-message>=[Gmail]/All <enter><enter><enter-command>echo 'Conversation archived.'<enter>"
+macro index,pager z "<save-message>=[Gmail]/All <enter><sync-mailbox><enter><enter-command>echo 'Conversation archived.'<enter>"
