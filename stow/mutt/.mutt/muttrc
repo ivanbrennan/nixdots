@@ -21,10 +21,12 @@ set confirmappend = no
 set history_file = ~/.mutt/mutthistory
 set history = 100
 set save_history = 100
+set mailcap_path = ~/.mutt/config/mailcap
+set wait_key = no
 
 # appearance
 color indicator  brightcolor222 color234
-color status     color242       default
+color status     color242       color234
 color hdrdefault color248       default
 color header     color222       default '^[[:alpha:]]+:'
 color index      color244       default ~R

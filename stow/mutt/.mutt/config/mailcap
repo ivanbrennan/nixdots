@@ -1,0 +1,1 @@
+text/plain; ~/.mutt/scripts/view_mail.sh %s %{charset}; needsterminal
