@@ -1,0 +1,121 @@
+# attach
+bind  attach   <enter>    view-mailcap
+bind  attach   <return>   view-mailcap
+bind  attach   <tab>      collapse-parts
+bind  attach   B          bounce-message
+bind  attach   L          bottom-page
+bind  attach   b          previous-page
+bind  attach   f          next-page
+bind  attach   u          exit
+
+# browser
+bind  browser  G          last-entry
+bind  browser  gg         first-entry
+
+# editor
+bind  editor   <Tab>      complete-query
+bind  editor   \Cn        history-down
+bind  editor   \Cp        history-up
+
+# generic
+bind  generic  x          tag-entry
+
+# index
+bind  index    <space>    next-page
+bind  index    <tab>      collapse-thread
+bind  index    B          bounce-message
+bind  index    E          edit
+bind  index    G          imap-fetch-mail
+bind  index    G          last-entry
+bind  index    L          bottom-page
+bind  index    b          previous-page
+bind  index    c          mail
+bind  index    f          next-page
+bind  index    gg         first-entry
+bind  index    t          tag-thread
+macro index    z          "<save-message>=[Gmail]/All <enter><enter-command>echo 'Conversation archived.'<enter>"
+
+# pager
+bind  pager    <space>    next-page
+bind  pager    B          bounce-message
+bind  pager    E          edit
+bind  pager    G          bottom
+bind  pager    b          previous-page
+bind  pager    c          mail
+bind  pager    f          next-page
+bind  pager    gg         top
+bind  pager    j          next-line
+bind  pager    k          previous-line
+bind  pager    u          exit
+macro pager    z          "<save-message>=[Gmail]/All <enter><enter-command>echo 'Conversation archived.'<enter>"
+
+# noops
+bind  attach   v          noop # collapse-parts
+bind  editor   <space>    noop # So line-editor can accept folders with spaces in their names.
+bind  generic  *          noop
+bind  generic  <          noop
+bind  generic  =          noop
+bind  generic  >          noop
+bind  generic  Z          noop
+bind  generic  [          noop
+bind  generic  ]          noop
+bind  generic  t          noop
+bind  generic  z          noop
+bind  generic  <F1>       noop
+bind  index    \#         noop
+bind  index    %          noop
+bind  index    &          noop
+bind  index    .          noop
+bind  index    <Esc><Tab> noop
+bind  index    <Esc>C     noop
+bind  index    <Esc>P     noop
+bind  index    <Esc>V     noop
+bind  index    <Esc>b     noop
+bind  index    <Esc>c     noop
+bind  index    <Esc>d     noop
+bind  index    <Esc>e     noop
+bind  index    <Esc>k     noop
+bind  index    <Esc>l     noop
+bind  index    <Esc>n     noop
+bind  index    <Esc>p     noop
+bind  index    <Esc>r     noop
+bind  index    <Esc>s     noop
+bind  index    <Esc>t     noop
+bind  index    <Esc>u     noop
+bind  index    <Esc>v     noop
+bind  index    @          noop
+bind  index    C          noop
+bind  index    D          noop
+bind  index    E          noop
+bind  index    F          noop
+bind  index    N          noop
+bind  index    O          noop
+bind  index    P          noop
+bind  index    Q          noop
+bind  index    R          noop
+bind  index    T          noop
+bind  index    U          noop
+bind  index    V          noop
+bind  index    W          noop
+bind  index    Y          noop
+bind  index    \Cb        noop
+bind  index    \Cd        noop
+bind  index    \Ce        noop
+bind  index    \Cf        noop
+bind  index    \Ck        noop
+bind  index    \Ct        noop
+bind  index    \Cu        noop
+bind  index    a          noop
+bind  index    e          noop
+bind  index    h          noop
+bind  index    m          noop
+bind  index    o          noop
+bind  index    p          noop
+bind  index    s          noop
+bind  index    t          noop
+bind  index    u          noop
+bind  index    w          noop
+bind  index    x          noop
+bind  index    y          noop
+bind  index    |          noop
+bind  index    ~          noop

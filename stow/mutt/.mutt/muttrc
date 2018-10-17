@@ -34,9 +34,5 @@ color index      color252       default ~U
 color index      color236       default ~D
 color tree       color244       default
 
-# keybindings
-bind  index,pager  E  edit
-bind  index        G  imap-fetch-mail
-macro index,pager  z  "<save-message>=[Gmail]/All <enter><enter-command>echo 'Conversation archived.'<enter>"
-bind  editor      \Cp history-up
-bind  editor      \Cn history-down
+# bindings
+source ~/.mutt/config/bindings.mutt
