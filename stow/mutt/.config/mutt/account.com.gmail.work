@@ -13,9 +13,9 @@ set mbox = "+[Gmail]/All Mail"
 set trash = "imaps://imap.gmail.com/[Gmail]/Trash"
 set record = ""
 
-set header_cache = "~/.mutt/com.gmail.work/cache/headers"
-set message_cachedir = "~/.mutt/com.gmail.work/cache/bodies"
-set certificate_file = "~/.mutt/com.gmail.work/certificates"
+set header_cache = $my_mutt/com.gmail.work/cache/headers
+set message_cachedir = $my_mutt/com.gmail.work/cache/bodies
+set certificate_file = $my_mutt/com.gmail.work/certificates
 
-set alias_file = ~/.mutt/com.gmail.work/aliases
+set alias_file = $my_mutt/com.gmail.work/aliases
 source $alias_file

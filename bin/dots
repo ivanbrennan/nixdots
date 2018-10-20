@@ -3,10 +3,16 @@
 set -eu
 
 main() {
+    prepare_configs
     symlink_configs
     import_public_github_gpg_key
     configure_desktop
     print_done
+}
+
+prepare_configs() {
+    mkdir -p ~/.config/mutt/com.gmail.{home,work}/cache/{headers,bodies}
+    touch ~/.config/mutt/com.gmail.{home,work}/{aliases,certificates}
 }
 
 symlink_configs() {

@@ -2,15 +2,17 @@ set ssl_force_tls = yes
 set imap_keepalive = 900
 set move = no
 
-# accounts
-folder-hook "account.com.gmail.home" "source ~/.mutt/account.com.gmail.home"
-folder-hook "account.com.gmail.work" "source ~/.mutt/account.com.gmail.work"
+set my_mutt = $HOME/.config/mutt
 
-macro index gh "<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.home<enter><change-folder>!<enter>"
-macro index gw "<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.work<enter><change-folder>!<enter>"
+# accounts
+folder-hook "account.com.gmail.home" "source $my_mutt/account.com.gmail.home"
+folder-hook "account.com.gmail.work" "source $my_mutt/account.com.gmail.work"
+
+macro index gh "<sync-mailbox><enter-command>source $my_mutt/account.com.gmail.home<enter><change-folder>!<enter>"
+macro index gw "<sync-mailbox><enter-command>source $my_mutt/account.com.gmail.work<enter><change-folder>!<enter>"
 
 set my_default_account = `echo ${MUTT_ACCOUNT:-home}`
-source ~/.mutt/account.com.gmail.$my_default_account
+source $my_mutt/account.com.gmail.$my_default_account
 
 # options
 set sort = threads
@@ -18,10 +20,10 @@ set sort_aux = reverse-last-date
 set index_format = "%4C %Z %{%b %d} %-22.22L %s"
 set header_color_partial = yes
 set confirmappend = no
-set history_file = ~/.mutt/mutthistory
+set history_file = $my_mutt/mutthistory
 set history = 100
 set save_history = 100
-set mailcap_path = ~/.mutt/config/mailcap
+set mailcap_path = $my_mutt/config/mailcap
 set wait_key = no
 
 # appearance
@@ -35,4 +37,4 @@ color index      color236       default ~D
 color tree       color244       default
 
 # bindings
-source ~/.mutt/config/bindings.mutt
+source $my_mutt/config/bindings.mutt
