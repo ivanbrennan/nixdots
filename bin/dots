@@ -11,8 +11,8 @@ main() {
 }
 
 prepare_configs() {
-    mkdir -p ~/.config/mutt/com.gmail.{home,work}/cache/{headers,bodies}
-    touch ~/.config/mutt/com.gmail.{home,work}/{aliases,certificates}
+    mkdir -p "$HOME/.config/mutt/com.gmail.{home,work}/cache/{headers,bodies}"
+    touch "$HOME/.config/mutt/com.gmail.{home,work}/{aliases,certificates}"
 }
 
 symlink_configs() {

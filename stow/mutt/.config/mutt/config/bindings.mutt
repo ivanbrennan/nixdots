@@ -69,18 +69,16 @@ bind index,pager         W           noop
 bind index,pager         Y           noop
 bind generic             Z           noop
 bind index               a           noop
-bind attach,pager        d           noop
+bind attach,index,pager  d           noop
 bind index,pager         e           noop
 bind attach              g           noop
 bind attach,index,pager  h           noop
 bind pager               i           noop
-bind generic             j           noop
-bind generic             k           noop
 bind attach,index,pager  m           noop
 bind index,pager         o           noop
 bind attach,index,pager  p           noop
 bind attach              r           noop
-bind attach,index,pager  s           noop
+bind index,pager         s           noop
 bind generic,index,pager t           noop
 bind index               u           noop
 bind attach              v           noop # collapse-parts
@@ -94,10 +92,12 @@ bind index               ~           noop
 # attach
 bind  attach   <enter>    view-mailcap
 bind  attach   <return>   view-mailcap
+bind  attach   <space>    view-text
 bind  attach   <tab>      collapse-parts
 bind  attach   \Cb        previous-page
 bind  attach   \Cf        next-page
 bind  attach   L          bottom-page
+bind  attach   m          view-mailcap
 bind  attach   u          exit
 
 # browser
@@ -105,7 +105,7 @@ bind  browser  G          last-entry
 bind  browser  gg         first-entry
 
 # editor
-bind  editor   <Tab>      complete-query
+bind  editor   <Tab>      complete
 bind  editor   \Cn        history-down
 bind  editor   \Cp        history-up
 
@@ -122,10 +122,12 @@ bind  index    L           bottom-page
 bind  index    R           imap-fetch-mail
 bind  index    b           previous-page
 bind  index    c           mail
+bind  index    D           delete-message
 bind  index    f           next-page
 bind  index    gg          first-entry
+bind  index    m           display-message
 bind  index    t           tag-thread
-macro index    z           "<save-message>=[Gmail]/All <enter><enter-command>echo 'Conversation archived.'<enter>"
+macro index    z           "<save-message>=[Gmail]/All Mail<enter><enter-command>echo 'Conversation archived.'<enter>"
 
 # pager
 bind  pager    <space>     next-page
@@ -142,4 +144,4 @@ bind  pager    g           top
 bind  pager    j           next-line
 bind  pager    k           previous-line
 bind  pager    u           exit
-macro pager    z           "<save-message>=[Gmail]/All <enter><enter-command>echo 'Conversation archived.'<enter>"
+macro pager    z           "<save-message>=[Gmail]/All Mail<enter><enter-command>echo 'Conversation archived.'<enter>"
