@@ -131,6 +131,7 @@ macro index    z           "<save-message>=[Gmail]/All Mail<enter><enter-command
 
 # pager
 bind  pager    <space>     next-page
+bind  pager    <Tab>       toggle-quoted
 bind  pager    B           bounce-message
 bind  pager    D           delete-message
 bind  pager    E           edit
