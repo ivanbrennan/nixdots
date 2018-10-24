@@ -115,6 +115,8 @@ bind  generic  x           tag-entry
 # index
 bind  index    <space>     next-page
 bind  index    <tab>       collapse-thread
+bind  index    <Down>      next-entry
+bind  index    <Up>        previous-entry
 bind  index    B           bounce-message
 bind  index    E           edit
 bind  index    G           last-entry
