@@ -124,7 +124,7 @@ bind  index    L           bottom-page
 bind  index    R           imap-fetch-mail
 bind  index    b           previous-page
 bind  index    c           mail
-bind  index    D           delete-message
+bind  index    dd          delete-message
 bind  index    f           next-page
 bind  index    gg          first-entry
 bind  index    m           display-message
