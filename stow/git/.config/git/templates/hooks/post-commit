@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ -e stack.yaml ]; then
+if [ -e ./*.cabal ]; then
   .git/hooks/hasktags >/dev/null 2>&1 &
 else
   .git/hooks/ctags >/dev/null 2>&1 &
