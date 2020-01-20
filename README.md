@@ -9,6 +9,7 @@ If you're using an SSH config file to manage multiple identities, you can use th
 
 ### Todo
 
+Fix Ctrl-Enter in alacritty shell
 Fix autoload of `_tmux` bash completion.
 Fix `_tmux` bash completion to default to filenames if no completion found.
 ```
@@ -18,3 +19,7 @@ Fix `_tmux` bash completion to default to filenames if no completion found.
 ╰(ivan)• tmux new-
 new-session  new-window
 ```
+
+Configure Mutt to pull contacts from lbdb, integrated with Gmail contacts and Apple address book
+https://annvix.com/using_mutt_on_os_x
+Wrap stow command(s) in make
