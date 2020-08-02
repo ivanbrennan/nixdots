@@ -1,15 +1,27 @@
 #!/bin/sh
 
 set -e
-PATH="/usr/local/bin:$PATH"
-dir="`git rev-parse --git-dir`"   # repo's git dir
-trap 'rm -f "$dir/$$.etags"' EXIT # delete temp file upon EXIT
 
-# pipe project's files to ctags, use etags format
-# use paths relative to tagfile
-# write to temp file .git/<pid>.etags
-git ls-files | \
-  ctags -L - -e -o "$dir/$$.etags" --tag-relative=yes
+# Find any .ctags option files.
+optfiles=`git ls-files --cached --others --directory --exclude-standard -- .ctags '*/.ctags'`
 
-mv "$dir/$$.etags" "$dir/etags"  # tagfile: .git/etags
+# Change IFS from its default '<space><tab><newline>' to just '<newline>'.
+# This lets us iterate through optfiles correctly even if there are space
+# characters embedded in its elements.
+IFS='
+'
 
+# Run ctags in each directory that holds a .ctags file. If no .ctags files
+# were found, just run ctags from the top-level directory.
+for optfile in ${optfiles:-./fake}
+do
+    ( # Ensure `git ls-files` searches from PWD.
+      unset GIT_DIR GIT_WORK_TREE
+      tmpfile=`mktemp --tmpdir etags.XXXXXXXXXX~`
+      trap "rm -f '$tmpfile'" EXIT INT TERM
+      # Create etags file.
+      cd `dirname "$optfile"`
+      git ls-files | ctags -L - -e -f $tmpfile "$@"
+      mv "$tmpfile" etags
+    )
+done
