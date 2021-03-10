@@ -32,6 +32,6 @@ export DOTFILES
 [ -e "$EMACSD" ] || \
     git clone "git@${github_host}:ivanbrennan/emacs.d.git" "$EMACSD"
 
-ln -svnf "$HOME/Development/resources/emacs.d" "$HOME/.emacs.d"
+ln -svnf "$HOME/Development/resources/emacs.d" "${XDG_CONFIG_HOME:-${HOME}/.config}/emacs"
 
 } # End of wrapping
