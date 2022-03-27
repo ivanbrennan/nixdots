@@ -1,3 +1,6 @@
 export ODEKO_PREFIX=$HOME/Development/odeko
 
-eval "$(register-sumall-argcomplete 2>/dev/null)"
+if test -f ~/.bashrc.local
+then
+    . ~/.bashrc.local
+fi
