@@ -1,6 +1,6 @@
 eval "$(direnv hook bash)"
 
-PATH="$HOME/.emacs.d/bin:$PATH"
+PATH="$HOME/.config/emacs/bin:$PATH"
 
 export ODEKO_PREFIX=$HOME/Development/odeko
 
